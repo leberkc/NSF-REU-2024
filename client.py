@@ -1,5 +1,5 @@
 
-import socket, random
+import socket, random, string
 from encoder import start
 
 if __name__ == "__main__":
@@ -21,11 +21,12 @@ if __name__ == "__main__":
 
         print("Connected to server")
         
-        client_message = input("Enter message to send to the server (or type 'exit' to disconnect): ")
-            
-        if client_message.lower() == 'exit':
-            print("Disconnecting from server...")
-            exit()
+        # client_message = input("Enter message to send to the server (or type 'exit' to disconnect): ")  
+        # if client_message.lower() == 'exit':
+        #     print("Disconnecting from server...")
+        #     exit()
+
+        client_message = ''.join(random.choices(string.ascii_letters + string.digits, k=10000))
 
         for _ in range(num_trials):
             start(client_socket, client_message)
@@ -35,9 +36,4 @@ if __name__ == "__main__":
 
     finally:
         client_socket.close()
-        #print("Disconnected from server")
-
-    # avg_packets_received = total_packets_received / num_trials
-    # avg_packets_processed = total_packets_processed / num_trials
-    # print(f"Average Packets Received: {avg_packets_received}")
-    # print(f"Average Packets Processed: {avg_packets_processed}")
+        print("Disconnected from server")

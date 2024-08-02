@@ -81,11 +81,6 @@ def run(client_socket, msg, blocksize, seed, c, delta):
     for block in ENCODER_BLK:
         client_socket.sendall(pack('!III%ss'%blocksize, *block))
         
-        #Information from server that tells whether packet was received or not
-        # r = client_socket.recv(1)
-        # if r == "1":
-        #     if DEBUG: print("AT run, ACK={}, decoding finished".format(r))
-        #     return
     if DEBUG: print("AT run - DONE")
 
 
@@ -99,7 +94,7 @@ def start(client_socket, msg):
         sys.exit(0)
     if DEBUG: print("EXIT")
 
-blocksize = 5
+blocksize = 10000
 seed = 2067261
 c = lt_sampler.PRNG_C
 delta = lt_sampler.PRNG_DELTA

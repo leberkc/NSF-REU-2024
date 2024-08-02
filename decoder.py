@@ -177,6 +177,7 @@ def decode(client_socket, drop_rate):
     # Report summary stats on transmission 
     
     print("\nDecoded message ====---->: {}\n".format(DECODED_STR))
+    """
     if time_elapsed > 1000:
         print("Transmission Time: %.4fs" % (time_elapsed / 1000), file=sys.stderr)
     else:
@@ -190,9 +191,9 @@ def decode(client_socket, drop_rate):
     print("\tBytes/packet: %d" % (bytes_received / blocks_received) , file=sys.stderr)
     print("\tBytes Total:  %d" % bytes_received, file=sys.stderr)
     print("Code Rate: %1.4f" % rate, file=sys.stderr)
+    """
+    return blocks_received + blocks_dropped, blocks_received, rate
     
-    return blocks_received + blocks_dropped, blocks_received
-
 def start(client_socket):
     try:
         return decode(client_socket, drop_rate)
@@ -201,5 +202,5 @@ def start(client_socket):
 
     if DEBUG: print("EXIT")
 
-drop_rate = 0.5
+drop_rate = 0.0
 

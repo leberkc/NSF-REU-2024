@@ -15,8 +15,9 @@ list5 = df.iloc[:, 4]
 list6 = df.iloc[:, 5]
 list7 = df.iloc[:, 6]
 list8 = df.iloc[:, 7]
+list9 = df.iloc[:, 8]
 
-f_statistic, p_value = stats.f_oneway(list1, list2, list3, list4, list5, list6, list7, list8)
+f_statistic, p_value = stats.f_oneway(list1, list2, list3, list4, list5, list6, list7, list8, list9)
 
 print("F-Statistic:", f_statistic)
 print("P-Value:", p_value)
